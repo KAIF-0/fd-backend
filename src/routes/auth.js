@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken';
 
 const router = express.Router();
 
-// Register
+
 router.post('/register',
   [
     body('username').trim().isLength({ min: 3 }).escape(),
@@ -35,7 +35,7 @@ router.post('/register',
   }
 );
 
-// Login
+
 router.post('/login',
   [
     body('username').trim().escape(),

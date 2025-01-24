@@ -6,7 +6,7 @@ import { auth } from '../middleware/auth.js';
 
 const router = express.Router();
 
-// Place new order
+
 router.post('/order',
   auth,
   [
@@ -18,7 +18,7 @@ router.post('/order',
     try {
       const { items } = req.body;
       
-      // Calculate total amount
+      
       let totalAmount = 0;
       for (const item of items) {
         const menuItem = await Menu.findById(item.menuItem);
@@ -44,7 +44,7 @@ router.post('/order',
   }
 );
 
-// Get user's orders
+
 router.get('/orders',
   auth,
   async (req, res, next) => {
