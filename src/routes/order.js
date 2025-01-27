@@ -6,7 +6,7 @@ import { auth } from '../middleware/auth.js';
 
 const router = express.Router();
 
-
+// order
 router.post('/order',
   auth,
   [
@@ -44,7 +44,7 @@ router.post('/order',
   }
 );
 
-
+//get all orders
 router.get('/orders',
   auth,
   async (req, res, next) => {

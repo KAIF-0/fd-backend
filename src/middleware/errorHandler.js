@@ -1,5 +1,5 @@
 export const errorHandler = (err, req, res, next) => {
-  console.error(err.stack);
+  console.error(err.stack);  //error handler middleware
 
   if (err.name === 'ValidationError') {
     return res.status(400).json({
@@ -7,8 +7,9 @@ export const errorHandler = (err, req, res, next) => {
       errors: Object.values(err.errors).map(error => error.message)
     });
   }
+  
 
-  if (err.code === 11000) {
+  if (err.code === 400) {
     return res.status(400).json({
       message: 'Duplicate key error',
       field: Object.keys(err.keyPattern)[0]

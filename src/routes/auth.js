@@ -20,7 +20,7 @@ router.post('/register',
 
       const { username, password } = req.body;
       const user = new User({ username, password });
-      await user.save();
+      await user.save();    //save user
 
       const token = jwt.sign(
         { userId: user._id },
@@ -28,7 +28,7 @@ router.post('/register',
         { expiresIn: '24h' }
       );
 
-      res.status(201).json({ user: { id: user._id, username: user.username }, token });
+      res.status(201).json({ user: { id: user._id, username: user.username }, token });   //token saved in cookies
     } catch (error) {
       next(error);
     }
@@ -56,7 +56,7 @@ router.post('/login',
         { expiresIn: '24h' }
       );
 
-      res.json({ user: { id: user._id, username: user.username }, token });
+      res.json({ user: { id: user._id, username: user.username }, token });   //token saved in cookies
     } catch (error) {
       next(error);
     }

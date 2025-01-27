@@ -5,7 +5,7 @@ import { auth } from '../middleware/auth.js';
 
 const router = express.Router();
 
-
+//all menus
 router.get('/menu', async (req, res, next) => {
   try {
     const menu = await Menu.find();
@@ -15,7 +15,7 @@ router.get('/menu', async (req, res, next) => {
   }
 });
 
-
+//add menu
 router.post('/menu',
   auth,
   [
@@ -36,7 +36,7 @@ router.post('/menu',
 );
 
 
-router.put('/menu/:id',
+router.put('/menu/:id',      //fetch a particular menu
   auth,
   [
     param('id').isMongoId(),
@@ -61,7 +61,7 @@ router.put('/menu/:id',
 );
 
 
-router.delete('/menu/:id',
+router.delete('/menu/:id',      //delete a menu
   auth,
   [param('id').isMongoId()],
   async (req, res, next) => {
