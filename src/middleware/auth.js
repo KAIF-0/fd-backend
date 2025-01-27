@@ -9,7 +9,7 @@ export const auth = async (req, res, next) => {
     if (!token) {
       return res.status(401).json({ message: 'Authentication required' });
     }
-//token
+//verifying token
     const decoded = jwt.verify(token, process.env.JWT_SECRET || 'your-secret-key');
     req.user = decoded;
     next();

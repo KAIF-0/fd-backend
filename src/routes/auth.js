@@ -22,6 +22,8 @@ router.post('/register',
       const user = new User({ username, password });
       await user.save();    //save user
 
+
+      //jwt token
       const token = jwt.sign(
         { userId: user._id },
         process.env.JWT_SECRET || 'your-secret-key',
@@ -43,6 +45,7 @@ router.post('/login',
   ],
   async (req, res, next) => {
     try {
+      //check user if exist
       const { username, password } = req.body;
       const user = await User.findOne({ username });
 
