@@ -18,7 +18,7 @@ router.post('/order',
     try {
       const { items } = req.body;
       
-      
+      //for items in order
       let totalAmount = 0;
       for (const item of items) {
         const menuItem = await Menu.findById(item.menuItem);

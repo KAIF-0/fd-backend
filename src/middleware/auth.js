@@ -1,5 +1,7 @@
 import jwt from 'jsonwebtoken';
 
+
+//verify user middleware
 export const auth = async (req, res, next) => {
   try {
     const token = req.header('Authorization')?.replace('Bearer ', '');
